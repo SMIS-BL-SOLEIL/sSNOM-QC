@@ -57,12 +57,17 @@ def init_session_state():
         st.session_state.uploaded_files = []
     if 'upload_widget_key' not in st.session_state:
         st.session_state.upload_widget_key = 0
+    if 'show_motd' not in st.session_state:
+        st.session_state.show_motd = True
+
 
 
 def reset_app():
     """Reset application state."""
     st.session_state.uploaded_files = []
     st.session_state.upload_widget_key += 1
+    st.session_state.show_motd = True
+
 
 
 def handle_file_upload(uploaded_file):
@@ -177,7 +182,8 @@ def create_comparison_plot(file_data_1, file_data_2, order):
     # Add figure caption
     add_figure_caption(fig, file_data_1, file_data_2)
     
-    # plt.tight_layout()
+    st.session_state.show_motd = False
+
     return fig
 
 
@@ -185,7 +191,6 @@ def add_figure_caption(fig, file_data_1, file_data_2):
     """Add caption with measurement parameters."""
     def format_params(params):
         return (
-            f"Project: {params['Project']}"
             f"Exp. Date: {params['Date']}" 
             f"TA: {params['TipAmplitude']} nm - Avg: {params['Averaging']} - "
             f"Int time: {params['Integrationtime']} ms - "
@@ -234,6 +239,7 @@ def render_sidebar():
             "Select demodulation order",
             DEMOD_OPTIONS,
             selection_mode="single",
+            width="content",
             default=DEMOD_OPTIONS[0]
         )
     elif num_files == 1:
@@ -275,6 +281,21 @@ def main():
     with st.sidebar:
         order = render_sidebar()
     
+    motd = '''## Suggested experiment parameters
+
+    For best comparison between measurements we suggest to use the following parameters.
+
+    Tapping amplitude: 70 nm
+    Number of acquisitions: 16
+    Integration time: 20 ms
+    Spectral resolution: 6 cm⁻¹
+    '''
+          # Hide motd once plot is successfully rendered
+
+    motd_box = None
+    if st.session_state.show_motd:
+        motd_box = st.markdown(motd)
+
     # Main content
     if len(st.session_state.uploaded_files) == MAX_FILES and order:
         try:
@@ -283,9 +304,13 @@ def main():
                 st.session_state.uploaded_files[1],
                 order
             )
-            st.pyplot(fig, use_container_width=True)
+            st.pyplot(fig, width="stretch")
             plt.close(fig)  # Free memory
             
+            st.session_state.show_motd = False
+            if motd_box:
+                motd_box.empty()
+
             render_metadata()
             
         except Exception as e:
