@@ -26,9 +26,7 @@ python -m streamlit run source/app.py
 
 ## Citing this work
 
-This work is licensed under the Creative Commons Attribution 4.0 International License [(CC BY 4.0)][license-link]. If you use this code in your work, please cite the paper, once published. 
-
-When explicitly referencing this code, you can use the DOI assigned to the repository. For example:
+This work is licensed under the GNU General Public License version 3.
 
 **_TODO_**
 
