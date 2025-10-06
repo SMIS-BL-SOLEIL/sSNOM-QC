@@ -1,0 +1,40 @@
+text.color : (0.2,0.2,0.2)
+
+# FONTS
+font.family : sans-serif
+font.sans-serif : Helvetica
+
+# AXES
+axes.titlesize : 15
+axes.labelsize : 13
+axes.edgecolor : (0.1,0.1,0.1)
+axes.labelcolor : (0.1,0.1,0.1)
+axes.linewidth : 1
+axes.spines.left : True
+axes.spines.right : True
+axes.spines.bottom : True
+axes.spines.top : True
+
+# GRID
+axes.grid : True
+grid.alpha : 0.75
+grid.linestyle : -
+grid.linewidth : 0.5
+
+# LINES
+axes.prop_cycle : cycler('color', [ '4287f5', 'f5a142'])
+lines.linewidth : 1.5
+lines.markeredgewidth : 0.0
+
+# TICKS
+xtick.labelsize : 12
+xtick.color : (0.2,0.2,0.2)
+xtick.direction : in
+ytick.labelsize : 12
+ytick.color : (0.2,0.2,0.2)
+ytick.direction : in
+
+# FIGURE OUTPUT 
+figure.figsize  : 12, 6
+figure.dpi : 150
+savefig.dpi : 200
