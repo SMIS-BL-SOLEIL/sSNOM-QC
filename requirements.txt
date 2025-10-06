@@ -1,5 +1,5 @@
+python==3.11
 numpy
 pySNOM
-tempfile
 matplotlib
 streamlit_shortcuts
