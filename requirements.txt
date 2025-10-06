@@ -1,0 +1,5 @@
+numpy
+pySNOM
+tempfile
+matplotlib
+streamlit_shortcuts
