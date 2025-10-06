@@ -32,7 +32,7 @@ This work is licensed under the GNU General Public License version 3.
 
 [license-link]:       http://creativecommons.org/licenses/by/4.0/
 [license-image]:      https://i.creativecommons.org/l/by/4.0/88x31.png
-[license-shield]:     https://img.shields.io/badge/License-GNU GPLv3-blue
+[license-shield]:     https://img.shields.io/badge/License-GNU_GPLv3-blue
 
 [application-link]: https://snom-qc.streamlit.app
 [application-shield]: https://img.shields.io/badge/Open_on_Streamlit-tomato
